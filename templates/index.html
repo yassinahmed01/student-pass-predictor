@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Pass Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Dataset Overview -->
+    <section>
+      <h2>📚 Dataset Overview</h2>
+      <p>
+        • <strong>Source:</strong> UCI Student Performance (Math)<br>
+        • <strong>Records:</strong> 395 students<br>
+        • <strong>Features used:</strong> sex, age, studytime, failures, absences, G1, G2, goout, Medu, Fedu<br>
+        • <strong>Target:</strong> pass/fail (G3 ≥ 10 → pass)
+      </p>
+    </section>
+
+    <!-- Instructions -->
+    <section>
+      <h2>📝 How to Predict</h2>
+      <ol>
+        <li>Fill in each field with the student’s data.</li>
+        <li>Ranges are shown in placeholders and descriptions below each input.</li>
+        <li>Click “Predict” to see whether the student is likely to pass.</li>
+      </ol>
+    </section>
+
+    <!-- Prediction Form -->
+    <h1>📊 Student Pass/Fail Prediction</h1>
+    <form action="/predict" method="POST">
+
+      <label>Sex (0 = F, 1 = M):</label>
+      <input type="number" name="sex" min="0" max="1" placeholder="0 or 1" required>
+      <small>Enter 0 for female, 1 for male.</small>
+
+      <label>Age:</label>
+      <input type="number" name="age" min="15" max="22" placeholder="15–22" required>
+      <small>Student age (between 15 and 22 years).</small>
+
+      <label>Study Time (1–4):</label>
+      <input type="number" name="studytime" min="1" max="4" placeholder="1–4" required>
+      <small>1:&lt;2 hrs, 2:2–5 hrs, 3:5–10 hrs, 4:&gt;10 hrs/week.</small>
+
+      <label>Failures:</label>
+      <input type="number" name="failures" min="0" max="4" placeholder="0–4" required>
+      <small>Number of past class failures (0–4).</small>
+
+      <label>Absences:</label>
+      <input type="number" name="absences" min="0" max="93" placeholder="0–93" required>
+      <small>Total school absences.</small>
+
+      <label>G1 (First Period Grade):</label>
+      <input type="number" name="G1" min="0" max="20" placeholder="0–20" required>
+      <small>Grade in 1st period (0–20).</small>
+
+      <label>G2 (Second Period Grade):</label>
+      <input type="number" name="G2" min="0" max="20" placeholder="0–20" required>
+      <small>Grade in 2nd period (0–20).</small>
+
+      <label>Go Out Frequency (1–5):</label>
+      <input type="number" name="goout" min="1" max="5" placeholder="1–5" required>
+      <small>1=very low … 5=very high social activity.</small>
+
+      <label>Mother's Education (0–4):</label>
+      <input type="number" name="Medu" min="0" max="4" placeholder="0–4" required>
+      <small>0=none, 1=primary, … 4=higher education.</small>
+
+      <label>Father's Education (0–4):</label>
+      <input type="number" name="Fedu" min="0" max="4" placeholder="0–4" required>
+      <small>0=none, 1=primary, … 4=higher education.</small>
+
+      <input type="submit" value="Predict">
+    </form>
+  </div>
+</body>
+</html>
